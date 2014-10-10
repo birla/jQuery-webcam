@@ -14,6 +14,7 @@ import flash.system.Security;
 import flash.external.ExternalInterface;
 import flash.display.BitmapData;
 import JPGEncoder;
+import mx.utils.Base64Encoder;
 
 class JSCam {
 
@@ -190,6 +191,22 @@ class JSCam {
 					}
 					ExternalInterface.call("webcam.onSave", row);
 				}
+
+			} else if ("callback_b64" == mode) {
+
+				var bytes:ByteArray;
+				
+				var encoder = new JPGEncoder(quality);
+
+				bytes = encoder.encode(JSCam.buffer);
+
+				var be = new Base64Encoder();
+				be.encodeBytes( bytes );
+
+				var bstr = be.toString();
+				trace("b64 string length: " + bstr.length);
+
+				ExternalInterface.call("webcam.onSave", bstr);
 
 			} else if ("save" == mode) {
 

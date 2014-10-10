@@ -16,7 +16,7 @@
 	"width": 320,
 	"height": 240,
 
-	"mode": "callback", // callback | save | stream
+	"mode": "callback", // callback | callback_b64 | save | stream
 
 	"swffile": "jscam.swf",
 	"quality": 85,
