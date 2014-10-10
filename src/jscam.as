@@ -193,15 +193,11 @@ class JSCam {
 				}
 
 			} else if ("callback_b64" == mode) {
-
-				var bytes:ByteArray;
 				
 				var encoder = new JPGEncoder(quality);
 
-				bytes = encoder.encode(JSCam.buffer);
-
 				var be = new Base64Encoder();
-				be.encodeBytes( bytes );
+				be.encodeBytes( encoder.encode(JSCam.buffer) );
 
 				var bstr = be.toString();
 				trace("b64 string length: " + bstr.length);
