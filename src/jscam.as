@@ -196,7 +196,8 @@ class JSCam {
 				
 				var encoder = new JPGEncoder(quality);
 
-				ExternalInterface.call("webcam.onSave", Base64.encode(encoder.encode(JSCam.buffer)));
+				//ExternalInterface.call("webcam.onSave", Base64.encode(encoder.encode(JSCam.buffer)));
+				ExternalInterface.call("webcam.onSave", encoder.encode(JSCam.buffer));
 
 			} else if ("save" == mode) {
 
